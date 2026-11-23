@@ -1,0 +1,236 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f1f5f9;
+  padding: 20px;
+  color: #1e293b;
+}
+
+/* ===== LAYOUT: form + preview side by side ===== */
+.wrap {
+  display: flex;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex: 1;
+}
+
+.card h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin: 18px 0 10px 0;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 5px;
+}
+
+/* ===== FORM ===== */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #475569;
+}
+
+input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
+}
+
+/* ===== BUTTONS ===== */
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button.green {
+  background: #16a34a;
+}
+
+button.green:hover {
+  background: #15803d;
+}
+
+/* Small remove button inside table */
+.remove-item {
+  width: auto;
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #ef4444;
+  margin-top: 5px;
+}
+
+.remove-item:hover {
+  background: #dc2626;
+}
+
+/* ===== INVOICE PREVIEW ===== */
+#invoicePreview {
+  background: white;
+}
+
+.invoice-header h3 {
+  font-size: 24px;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.invoice-header p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.invoice-details {
+  margin: 15px 0;
+  font-size: 14px;
+  line-height: 1.8;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+th {
+  background: #f1f5f9;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.empty-row td {
+  text-align: center;
+  color: #94a3b8;
+  padding: 20px;
+}
+
+/* ===== TOTALS ===== */
+.total-amount {
+  text-align: right;
+  margin-top: 15px;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.total-amount #totalAmount {
+  font-size: 18px;
+  color: #16a34a;
+}
+
+.payment-info {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.8;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 12px;
+  color: #475569;
+}
+
+/* ===== TOAST ===== */
+#toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+/* ===== MOBILE: stack on small screens ===== */
+@media (max-width: 800px) {
+  .wrap {
+    flex-direction: column;
+  }
+}
+
+/* ===== PRINT: only show invoice ===== */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .wrap {
+    display: block;
+  }
+  .card {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+  #toast {
+    display: none;
+  }
+}
